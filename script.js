@@ -21,16 +21,31 @@ getRandomNum();
 
 // gets user play
 
-let userPlay = window.prompt("Make your computerPlay!");
-userPlay = userPlay.toLowerCase();
 
 
 
 
 // now the program
+function game(){
+    
+    let userPlay = window.prompt("Make your computerPlay!");
+    
+    userPlay = userPlay.toLowerCase();
+    
+    getRandomNum();
+    
+    if (userPlay === computerPlay){
+        console.log("It's a Tie!")
+        }
+    else if ()
+}
+
+
+
+
+
 
 function gameoutcome(userPlay){
     if (userPlay = "rock"){
-        asd
-    }
+        }
 }
