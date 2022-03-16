@@ -1,108 +1,84 @@
 
 // generates a random number and assign rock papper or scissors to it depending its value, this will be the computer's "play"
-
+// debugger
 let computerPlay = "";
 
 
 function getRandomNum(){
-  let  randy = Math.floor((Math.random()*3)+1);
-  if (randy === 1){
-      computerPlay = "rock";
-  } else if (randy===2){
-      computerPlay = "paper";
-  }else{
-      computerPlay = "scissors"
-  } 
-  return computerPlay
+    let  randy = Math.floor((Math.random()*3)+1);
+    if (randy === 1){
+        computerPlay = "rock";
+    } else if (randy===2){
+        computerPlay = "paper";
+    }else{
+        computerPlay = "scissors"
+} 
+return computerPlay
 }
 
-getRandomNum();
 // -----------------
 
-// gets user play
+// declaring html 
+let gameDisplay = document.createElement('h1');
+gameDisplay.setAttribute('id', 'resultado')
+let userDisplay = document.createElement('h1');
+let computerDisplay = document.createElement('h1');
 
 
-let win = "Computer picked rock, so you win!!"
-let loose = "Computer picked rock, that means you loose!!"
-let tie = "Computer picked rock too, so it's a Tie!"
+//---------------
+
 let humanScore = 0;
 let computerScore = 0;
+let userPlay = "";
 
-// now the program
+
+rock.addEventListener('click', () =>{
+    userPlay = "rock"
+    game();
+    
+});
+paper.addEventListener('click', () =>{
+    userPlay = "paper"
+    game()
+})
+scissors.addEventListener('click', () =>{
+    userPlay = "scissors"
+    game()
+});
+
+//game func    
 function game(){
+    getRandomNum();    
+        let win = `you win!!`;
+        let loose = `you loose!!`;
+        let tie = `it's a Tie!`;
+        let outcome ;
     
-    let userPlay = window.prompt("Rock, Paper or Scissors??");
     
-    userPlay = userPlay.toLowerCase();
-    
-    getRandomNum();
-
-        
-    if(computerPlay === "rock"){
-        if (userPlay === "rock"){
-            console.log(tie)
-        } 
-        else if (userPlay === "paper"){
-            console.log(win)
-            humanScore ++
-            }
-        else{
-                console.log(loose)
-                computerScore ++
-            }
+    switch (userPlay+computerPlay){
+        case 'rockpaper':
+            case 'paperscissors':
+                case 'scissorsrock':
+            outcome = win;
+            break
+        case 'paperrock':
+            case 'scissorspaper':
+                case 'rockscissors':
+            outcome = loose;
+        break
+            case 'paperpaper':
+                case 'rockrock':
+                    case 'scissorsscissors':
+            outcome = tie;
+        break
         }
-            else if(computerPlay === "paper"){
-                if (userPlay === "rock"){
-                    console.log(loose)
-                    computerScore ++
-                } 
-                else if (userPlay === "paper"){
-                    console.log(tie)
-                }
-                else{
-                    console.log(win)
-                    humanScore ++
-                }
-            }
-            else{
-                if (userPlay === "rock"){
-                    console.log(win)
-                    humanScore ++
-                } 
-                else if (userPlay === "paper"){
-                    console.log(loose)
-                    computerScore ++
-                }
-                else{
-                    console.log(tie)
-                }
-                
-            }
-            
-            
-}
-
-function masterCall(){
-    for (i=1; i <= 5; i++){
-        game();
-
+        gameDisplay.innerHTML = outcome;
+        computerDisplay.textContent = `Computer: ${computerPlay}`;
+        userDisplay.textContent = `You: ${userPlay}`;   
+        asd.appendChild(userDisplay);
+        asd.appendChild(computerDisplay);    
+        asd.appendChild(gameDisplay);   
+        
     }
-} 
-
-
-masterCall();
-
-if (computerScore > humanScore){
-    console.log ('You loose :( ' + computerScore + ' to ' + humanScore)
-    }
-    else if(computerScore > humanScore){
-        console.log ('You win :) ' + humanScore + ' to ' + computerScore)
-    }
-    else{
-        console.log ("It's a Tie!!")
-    }
-
-
-
 
 
